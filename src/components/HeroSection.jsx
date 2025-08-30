@@ -1,30 +1,8 @@
-// src/components/HeroSection.jsx
-export default function HeroSection({ onFindJobs }) {
-  const handleClick = () => {
-    if (onFindJobs) {
-      onFindJobs();
-    } else {
-      // smooth-scroll to the search area later (when we add it with id="search")
-      const el = document.getElementById("search");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+const HeroSection = () => (
+  <div className="bg-blue-600 text-white py-16 text-center">
+    <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">Find your first job with ease</h1>
+    <p className="text-lg mt-2 font-light">Search entry-level jobs near you</p>
+  </div>
+);
 
-  return (
-    <section className="max-w-3xl mx-auto mt-10 rounded-2xl border bg-white p-8 text-center shadow-sm">
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-        Find your first job with ease
-      </h2>
-      <p className="mt-2 text-gray-600">
-        Search entry-level jobs near you
-      </p>
-
-      <button
-        onClick={handleClick}
-        className="mt-6 inline-flex items-center justify-center rounded-lg bg-black px-6 py-3 text-white hover:bg-gray-800"
-      >
-        Find Jobs
-      </button>
-    </section>
-  );
-}
+export default HeroSection;
