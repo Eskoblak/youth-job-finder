@@ -1,12 +1,45 @@
-# React + Vite
+# Youth Job Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple web application built with React and Tailwind CSS.  
+The goal of the project is to help young people find entry-level jobs easily.  
+It was created as part of my ALX Frontend Capstone project.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Search for jobs by keyword or location
+- View job details such as title, company, and location
+- Apply to jobs directly through the job link
+- Save jobs to local storage so they remain after refreshing the page
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Technologies Used
+- React
+- Tailwind CSS
+- Vite
+- Local Storage (for saved jobs)
+- JSearch API (from RapidAPI)
+
+---
+
+## How to Run the Project
+1. Clone the repository  
+   ```bash
+   git clone https://github.com/Eskoblak/youth-job-finder.git
+2. Navigate into the project folder:
+
+cd <youth-job-finder>
+
+
+3. Install dependencies:
+
+npm install
+
+
+4. Start the development server:
+
+npm run dev
+
+
+5. Open your browser at the link shown in the terminal (usually http://localhost:5173).
