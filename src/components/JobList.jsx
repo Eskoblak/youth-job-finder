@@ -1,7 +1,7 @@
 import React from "react";
 import JobCard from "./JobCard"; 
 
-function JobList({ jobs, onSave, savedJobs }) {
+function JobList({ jobs, onSave, savedJobs, isSavedPage = false }) {
   return (
     <div className="mt-6">
       {jobs.length > 0 ? (
@@ -11,6 +11,7 @@ function JobList({ jobs, onSave, savedJobs }) {
             job={job}
             onSave={onSave}
             saved={savedJobs.some((savedJob) => savedJob.job_id === job.job_id)}
+            isSavedPage={isSavedPage}   
           />
         ))
       ) : (
