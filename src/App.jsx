@@ -7,11 +7,14 @@ import SavedJobs from "./components/SavedJobs";
 
 const App = () => {
   const [jobs, setJobs] = useState([]);
-  const [savedJobs, setSavedJobs] = useState([]);
+  const [savedJobs, setSavedJobs] = useState(() => {
+    const stored = localStorage.getItem("savedJobs");
+    return stored ? JSON.parse(stored) : [];
+  });
   const [query, setQuery] = useState("developer");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState("home");
 
   const searchJobs = (e) => {
     e.preventDefault();
@@ -20,11 +23,14 @@ const App = () => {
   };
 
   const handleSaveJob = (job) => {
+    let updatedJobs;
     if (savedJobs.some((j) => j.job_id === job.job_id)) {
-      setSavedJobs(savedJobs.filter((j) => j.job_id !== job.job_id));
+      updatedJobs = savedJobs.filter((j) => j.job_id !== job.job_id);
     } else {
-      setSavedJobs([...savedJobs, job]);
+      updatedJobs = [...savedJobs, job];
     }
+    setSavedJobs(updatedJobs);
+    localStorage.setItem("savedJobs", JSON.stringify(updatedJobs));
   };
 
   useEffect(() => {
@@ -59,8 +65,8 @@ const App = () => {
   return (
     <div className="min-h-screen bg-gray-100 font-sans">
       <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      
-      {currentPage === 'home' ? (
+
+      {currentPage === "home" ? (
         <>
           <HeroSection />
           <SearchBar onSearch={searchJobs} />

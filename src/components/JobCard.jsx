@@ -1,33 +1,44 @@
-const JobCard = ({ job, onSave, isSaved }) => {
-  if (!job) return null;
-
+function JobCard({ job, onSave, saved }) {
   return (
-    <div className="border bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-      <h3 className="text-xl font-bold text-gray-800 mb-2">{job.job_title}</h3>
-      <p className="text-gray-600 font-medium">{job.employer_name}</p>
-      <p className="text-gray-500 text-sm mb-4">
-        {job.job_city}, {job.job_country}
-      </p>
-      <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
-        <a
-          href={job.job_apply_link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-4 py-2 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition"
-        >
-          Apply
-        </a>
-        <button
-          onClick={() => onSave(job)}
-          className={`px-4 py-2 rounded-lg font-medium transition ${
-            isSaved ? "bg-red-500 text-white hover:bg-red-600" : "bg-blue-500 text-white hover:bg-blue-600"
-          }`}
-        >
-          {isSaved ? "Remove" : "Save"}
-        </button>
+    <div className="bg-white shadow-md rounded-xl p-5 mb-4 transition hover:shadow-lg">
+      
+      <div className="flex flex-col">
+        <h2 className="text-lg font-semibold text-gray-800">{job.job_title}</h2>
+        <p className="text-sm text-gray-600">{job.employer_name}</p>
+        <p className="text-sm text-gray-500">
+          {job.job_city}, {job.job_country}
+        </p>
+      </div>
+
+      <div className="mt-4 flex items-center justify-between">
+        <div>
+          <a
+            href={job.job_apply_link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-blue-600 text-sm font-medium hover:underline"
+          >
+            Apply
+          </a>
+        </div>
+
+        <div>
+          <button
+            onClick={() => onSave(job)}
+            className={`px-5 py-2 rounded-full text-sm font-semibold shadow-md transition-colors duration-200
+              ${
+                saved
+                  ? "bg-gray-300 text-gray-800 hover:bg-gray-400"
+                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+              }
+            `}
+          >
+            {saved ? "Remove" : "Save"}
+          </button>
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default JobCard;
